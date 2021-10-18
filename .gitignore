@@ -27,6 +27,12 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+dist
+db.sqlite3
+sqlite.db
+!*media/.gitkeep
+media/*
+
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.

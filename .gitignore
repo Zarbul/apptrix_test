@@ -32,6 +32,7 @@ db.sqlite3
 sqlite.db
 !*media/.gitkeep
 media/*
+migrations
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

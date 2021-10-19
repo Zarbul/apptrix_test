@@ -3,9 +3,9 @@ from django.core.exceptions import ValidationError
 
 def get_path_upload_avatar(instans, file):
     """
-    Построение пути к файлу, format: (media)/avatar/user_id/photo.jpg
+    Построение пути к файлу, format: (media)/avatar/user_id/avatar.jpg
     """
-    return f'avatar/{instans}/{file}'
+    return f'avatar/{instans}/avatar.jpg'
 
 
 def validate_size_image(file_obj):

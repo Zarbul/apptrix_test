@@ -1,3 +1,7 @@
+from io import BytesIO
+
+from PIL import Image
+from django.core.files.base import ContentFile
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.contrib.auth.models import AbstractUser
@@ -35,5 +39,16 @@ class AuthUser(AbstractUser):
 
     def save(self, *args, **kwargs):
         self.username = self.email
+        self.add_watermark()
         return super(AuthUser, self).save(*args, **kwargs)
 
+    def add_watermark(self):
+        pos = (0, 0)
+        photo = Image.open(self.avatar)
+        watermark = Image.open('media/apptrix.jpg')
+        photo.paste(watermark, pos)
+        temp = BytesIO()
+        photo.save(temp, 'JPEG')
+        temp.seek(0)
+        self.avatar.save(self.avatar, ContentFile(temp.read()), save=False)
+        temp.close()

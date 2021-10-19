@@ -24,7 +24,8 @@ class AuthUser(AbstractUser):
         upload_to=get_path_upload_avatar,
         blank=True,
         null=True,
-        validators=[FileExtensionValidator(allowed_extensions=['jpg']), validate_size_image]
+        validators=[FileExtensionValidator(allowed_extensions=['jpg']), validate_size_image],
+        default='media/apptrix.jpg'
     )
 
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'gender']
